@@ -15,6 +15,7 @@ export default class TodoComponent extends Component {
             placeholder="Enter Todo"
             onChange={null}
           />
+          <Button bysStyle="primary">Add Todo</Button>
         </FormGroup>
       </div>
     );
