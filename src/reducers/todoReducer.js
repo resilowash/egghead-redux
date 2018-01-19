@@ -1,10 +1,10 @@
 const defaultState ={
-newTodo: {
-  id: null,
-  text: '',
-  completed: false 
-},
-todoList: []
+  newTodo: {
+    id: null,
+    text: '',
+    completed: false
+  },
+  todoList: []
 
 }
 
