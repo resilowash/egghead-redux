@@ -4,12 +4,12 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
 import TodoComponent from './components/TodoComponent';
-import reducers from './reducers';
+import rootReducer from './reducers/rootReducer';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={createStoreWithMiddleware(rootReducer)}>
     <TodoComponent />
   </Provider>
   , document.querySelector('.container'));

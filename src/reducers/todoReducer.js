@@ -11,6 +11,7 @@ const defaultState ={
 export default function(state = defaultState, action={type: 'default'}) {
   console.log('ACTION: ', action);
   switch(action.type){
+    default: return defaultState; 
 
   }
 }
