@@ -14,4 +14,10 @@ Install the dependencies and run the app. Utilizes webpack-dev-server to run.
 - [ ] Hook up the text box
 - [ ] Create the list items component with a function
 - [ ] Create a service backend with node to save todos
-- [ ] Create an authorization service 
+- [ ] Create an authorization service
+- [ ] Refactor to use yarn
+- [ ] Refactor to use functional components where you can
+- [ ] Add JSLint to webpack
+- [ ] Add Jest unit tests
+- [ ] Make webpack do live reloading
+- [ ] Make Webpack not use bundle.js during development
