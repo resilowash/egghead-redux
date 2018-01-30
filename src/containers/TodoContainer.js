@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import TodoComponent from '../components/TodoComponent';
-import { addNewTodo } from '../actions/TodoAction';
+import { addNewTodo } from '../actions/TodoActions';
+import { getTodoListItems } from '../selectors/TodoSelectors'
 
 // const TodoContainter = connect(
 //   (state) => {
@@ -19,7 +20,7 @@ export default connect(null, mapDispatchToProps) (TodoComponent);
 const TodoContainer = connect(
   (state) => {
     return {
-      todoItems: getTodoItems(state),
+      todoItems: getTodoListItems(state),
     }
   },
   (dispatch) => {

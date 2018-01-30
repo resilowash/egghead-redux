@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Button, Label, FormControl, ControlLabel, FormGroup, Row, Col, Grid } from 'react-bootstrap';
 
-import { addNewTodo } from '../actions/TodoAction';
+import { addNewTodo } from '../actions/TodoActions';
 import TodoContainer from '../containers/TodoContainer';
 
 export default class TodoComponent extends Component {
@@ -21,7 +21,7 @@ export default class TodoComponent extends Component {
             <Col md={6}>
               <FormControl
                 type="text"
-                value={this.state.newTodo}
+                value={this.props.newTodo.text}
                 placeholder="Enter Todo"
                 inputRef={(ref)=>this.todoInput = ref}
                 onChange={null}
@@ -32,7 +32,7 @@ export default class TodoComponent extends Component {
             </Col>
           </Row>
           <Row>
-            <ListComponent data={this.state}/>
+            <ListComponent data={this.props.todoList}/>
           </Row>
         </Grid>
         </FormGroup>
@@ -45,9 +45,9 @@ class ListComponent extends Component {
   render() {
     return (
       <ol>
-        { this.data.todos.foreach(function(currentValue, index){
-          <li key={currentValue.id}>currentValue.text </li>
-        }) }
+      { this.props.data.foreach(function(currentValue, index){
+        <li key={currentValue.id}>currentValue.text </li>
+      }) }
       </ol>
     );
   }

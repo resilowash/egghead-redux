@@ -1,4 +1,4 @@
-import { ADD_NEW } from "../actions/TodoAction.js";
+import { ADD_NEW } from "../actions/TodoActions.js";
 
 const defaultState ={
   newTodo: {
