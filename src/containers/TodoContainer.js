@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import TodoComponent from '../components/TodoComponent';
 import { addNewTodo } from '../actions/TodoActions';
-import { getTodoListItems } from '../selectors/TodoSelectors'
+import { getTodoListItems, getEntireTodo } from '../selectors/TodoSelectors'
 
 // const TodoContainter = connect(
 //   (state) => {
@@ -21,6 +21,7 @@ const TodoContainer = connect(
   (state) => {
     return {
       todoItems: getTodoListItems(state),
+      todo: getEntireTodo(state)
     }
   },
   (dispatch) => {

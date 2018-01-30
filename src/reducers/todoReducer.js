@@ -21,7 +21,7 @@ export default function(state = defaultState, action={type: 'default'}) {
           text: action.payload.text,
           completed: false
         },
-        todoList: [...data]
+        todoList: [...action.data]
       }
     default: return defaultState;
 
