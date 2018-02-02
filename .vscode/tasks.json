@@ -1,0 +1,50 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "npm-start",
+            "type": "shell",
+            "isBackground": true,
+            "command": "npm",
+            "args": [
+                "start"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [
+                {
+                    "owner": "custom",
+                    "pattern": {
+                        "regexp": "____________"
+                    },
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": "^webpack: Compiling\\.\\.\\.$",
+                        "endsPattern": "^webpack: (Compiled successfully|Compiled with warnings|Failed to compile)\\.$"
+                    }
+                }
+            ]
+        },
+        {
+            "label": "npm-test",
+            "type": "shell",
+            "isBackground": true,
+            "command": "npm",
+            "args": [
+                "test"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        }
+    ]
+}
