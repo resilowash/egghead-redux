@@ -21,7 +21,7 @@ export default class TodoComponent extends Component {
             <Col md={6}>
               <FormControl
                 type="text"
-                value={this.props.todo.newTodo.text}
+                value={null}
                 placeholder="Enter Todo"
                 inputRef={(ref)=>this.todoInput = ref}
                 onChange={null}
@@ -45,9 +45,7 @@ class ListComponent extends Component {
   render() {
     return (
       <ol>
-      { this.props.data.foreach(function(currentValue, index){
-        <li key={currentValue.id}>currentValue.text </li>
-      }) }
+      
       </ol>
     );
   }

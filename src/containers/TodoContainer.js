@@ -20,8 +20,11 @@ export default connect(null, mapDispatchToProps) (TodoComponent);
 const TodoContainer = connect(
   (state) => {
     return {
-      todoItems: getTodoListItems(state),
+      todoItems: state
+    /*  todoItems: getTodoListItems(state),
       todo: getEntireTodo(state)
+
+      */
     }
   },
   (dispatch) => {

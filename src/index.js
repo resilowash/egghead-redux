@@ -8,6 +8,8 @@ import rootReducer from './reducers/rootReducer';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
+console.log("In Index.js");
+
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(rootReducer)}>
     <TodoComponent />

@@ -12,7 +12,9 @@ const defaultState ={
 
 export default function(state = defaultState, action={type: 'default'}) {
   console.log('ACTION: ', action);
+
   switch(action.type){
+
     case ADD_NEW:
       return {
         ...defaultState,
@@ -22,8 +24,10 @@ export default function(state = defaultState, action={type: 'default'}) {
           completed: false
         },
         todoList: [...action.data]
-      }
-    default: return defaultState;
+      };
+    default:
+      console.log("Default: ", defaultState);
+      return defaultState;
 
   }
 }
