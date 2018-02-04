@@ -17,6 +17,8 @@ function mapDispatchToProps(dispatch) {
 export default connect(null, mapDispatchToProps) (TodoComponent);
 */
 
+
+//the dispatch function argument in the connect is commonly referred to as the mapDispatchToProps
 const TodoContainer = connect(
   (state) => {
     return {
@@ -39,4 +41,4 @@ const TodoContainer = connect(
   }
 )(TodoComponent);
 
-export default TodoContainer; 
+export default TodoContainer;
