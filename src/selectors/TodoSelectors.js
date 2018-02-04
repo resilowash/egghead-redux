@@ -9,6 +9,7 @@ import { ADD_NEW } from '../actions/TodoActions';
 //map the function here to return the part of state that we want
 const getTodoItemsFromState = (state) => state.todos.todoList;
 const getEntireTodoFromState = (state) => state.todos;
+const getNewTodoFromState = (state) => state.todos.newTodo;
 
 //create the selector -- don't know much about why this is how this works yet... todo find out.
 export const getTodoListItems = createSelector(
@@ -22,4 +23,12 @@ export const getTodoListItems = createSelector(
 export const getEntireTodo = createSelector(
   [getEntireTodoFromState],
   (entireTodo) => entireTodo
+);
+
+export const getNewTodo = createSelector(
+  [getNewTodoFromState],
+  (newTodo) => {
+    console.log("Called getNewTodo Selector");
+    return newTodo;
+  }
 );

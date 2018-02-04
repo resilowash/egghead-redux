@@ -33,7 +33,7 @@ export default class TodoComponent extends Component {
             </Col>
           </Row>
           <Row>
-            <ListComponent data={this.props.todoList}/>
+            <ListComponent data={null}/>
           </Row>
         </Grid>
         </FormGroup>
