@@ -45,9 +45,7 @@ export default class TodoComponent extends Component {
 class ListComponent extends Component {
   render() {
     return (
-      <ol>
-    
-      </ol>
+      <span>{this.props.data}</span>
     );
   }
 }

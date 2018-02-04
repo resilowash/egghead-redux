@@ -6,7 +6,7 @@ const defaultState ={
     text: '',
     completed: false
   },
-  todoList: [{id: "default", text: "Default Text"}]
+  todoList: []
 
 }
 
@@ -15,19 +15,17 @@ export default function(state = defaultState, action={type: 'default'}) {
   switch(action.type){
 
     case ADD_NEW:
-      console.log('DEFAULT STATE FROM REDUCER: ', defaultState);
       return {
-          ...defaultState,
+          ...state,
           newTodo: {
             id: action.payload.id,
             text: action.payload.text,
             completed: false
           },
-        todoList: [...defaultState.todoList, action.payload]
+        todoList: [...state.todoList, action.payload]
       };
     default:
-      console.log("Default: ", defaultState);
-      return defaultState;
+      return state;
 
   }
   console.log("STATE FROM REDUCER: ", state);
