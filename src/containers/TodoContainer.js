@@ -32,9 +32,11 @@ const TodoContainer = connect(
        onFilter: (filter) => {
 
        },
-       todoClick: (id, text) => {
-         dispatch(addNewTodo(id, text)); 
+       addTodo: (id, text) => {
+         dispatch(addNewTodo(id, text));
        }
      }
   }
-)
+)(TodoComponent);
+
+export default TodoContainer; 

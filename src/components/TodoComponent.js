@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {Button, Label, FormControl, ControlLabel, FormGroup, Row, Col, Grid } from 'react-bootstrap';
 
 import { addNewTodo } from '../actions/TodoActions';
-import TodoContainer from '../containers/TodoContainer';
-import { todoClick } from '../containers/TodoContainer';
+//import TodoContainer from '../containers/TodoContainer';
+
 
 export default class TodoComponent extends Component {
   render() {
@@ -29,7 +29,7 @@ export default class TodoComponent extends Component {
                 />
             </Col>
             <Col md={4}>
-                <Button bsStyle="primary" onClick={()=>todoClick(null, this.todoInput.value)}>Add Todo</Button>
+                <Button bsStyle="primary" onClick={ () => this.props.addTodo(null, this.todoInput.value) }>Add Todo</Button>
             </Col>
           </Row>
           <Row>
