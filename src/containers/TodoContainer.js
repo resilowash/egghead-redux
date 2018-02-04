@@ -32,6 +32,9 @@ const TodoContainer = connect(
        onFilter: (filter) => {
 
        },
+       todoClick: (id, text) => {
+         dispatch(addNewTodo(id, text)); 
+       }
      }
   }
 )

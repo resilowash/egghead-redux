@@ -1,3 +1,5 @@
+//import { dispatch } from 'redux';
+
 //redux action-creator for todo
 const ADD_NEW = 'ADD_NEW';
 //globalID for todo
@@ -20,3 +22,10 @@ export const addNewTodo = (id, text) => {
     }
 
 }
+
+/*
+export const f = ( id, text ) => {
+  return dispatch(addNewTodo(id, text));
+}
+
+*/

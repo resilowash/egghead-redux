@@ -28,7 +28,7 @@ export default class TodoComponent extends Component {
                 />
             </Col>
             <Col md={4}>
-                <Button bsStyle="primary" onClick={()=>addNewTodo(null, this.todoInput.value)}>Add Todo</Button>
+                <Button bsStyle="primary" onClick={()=>f(null, this.todoInput.value)}>Add Todo</Button>
             </Col>
           </Row>
           <Row>
@@ -45,7 +45,7 @@ class ListComponent extends Component {
   render() {
     return (
       <ol>
-      
+
       </ol>
     );
   }
