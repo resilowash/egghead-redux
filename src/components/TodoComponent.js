@@ -22,7 +22,7 @@ export default class TodoComponent extends Component {
             <Col md={6}>
               <FormControl
                 type="text"
-                value={null}
+                value={this.newTodo}
                 placeholder="Enter Todo"
                 inputRef={(ref)=>this.todoInput = ref}
                 onChange={null}
@@ -33,7 +33,7 @@ export default class TodoComponent extends Component {
             </Col>
           </Row>
           <Row>
-            <ListComponent data={null}/>
+            <ListComponent data={this.props.todoItems}/>
           </Row>
         </Grid>
         </FormGroup>
@@ -45,7 +45,7 @@ export default class TodoComponent extends Component {
 class ListComponent extends Component {
   render() {
     return (
-      <span>{this.props.data}</span>
+      <span>{this.props.data[0] == null ? 'Todo' : this.props.data[0].text}</span>
     );
   }
 }
