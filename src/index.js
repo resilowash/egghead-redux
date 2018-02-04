@@ -8,14 +8,14 @@ import thunk from 'redux-thunk';
 //import TodoComponent from './components/TodoComponent';
 
 import TodoContainer from './containers/TodoContainer';
-import rootReducer from './reducers/rootReducer';
+import RootReducer from './reducers/RootReducer';
 
 
 console.log("In Index.js");
 
 //Note that the TodoContainer is the tag we call here.  - Why?
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(RootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>
