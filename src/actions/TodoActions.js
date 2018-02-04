@@ -1,7 +1,7 @@
 //import { dispatch } from 'redux';
 
 //redux action-creator for todo
-const ADD_NEW = 'ADD_NEW';
+export const ADD_NEW = 'ADD_NEW';
 //globalID for todo
 var gID = 1;
 
