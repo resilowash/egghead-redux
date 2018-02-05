@@ -10,9 +10,9 @@ Install the dependencies and run the app. Utilizes webpack-dev-server to run.
 ```
 
 #### Todo list for project
-- [x] Hook up the Actions to the container and component correctly. 
-- [ ] Hook up the reducers correctly.
-- [ ] Hook up the text box
+- [x] Hook up the Actions to the container and component correctly.
+- [x] Hook up the reducers correctly.
+- [x] Hook up the text box
 - [ ] Create the list items component with a function
 - [ ] Create a service backend with node to save todos
 - [ ] Create an authorization service

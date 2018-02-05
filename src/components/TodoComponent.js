@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, Label, FormControl, ControlLabel, FormGroup, Row, Col, Grid } from 'react-bootstrap';
+import {Button, Label, FormControl, ControlLabel, FormGroup, Row, Col, Grid, Glyphicon } from 'react-bootstrap';
 
 import { addNewTodo } from '../actions/TodoActions';
 //import TodoContainer from '../containers/TodoContainer';
@@ -9,6 +9,7 @@ export default class TodoComponent extends Component {
   render() {
     return (
       <div>
+        <h2><Glyphicon glyph="tower" /> My Todo List App </h2>
         <FormGroup
           controlId="todoForm"
         >
@@ -45,7 +46,15 @@ export default class TodoComponent extends Component {
 class ListComponent extends Component {
   render() {
     return (
-      <span>{this.props.data[0] == null ? 'Todo' : this.props.data[0].text}</span>
+      <div>
+        <h4> <Glyphicon glyph="star" /> My Todo List <Glyphicon glyph="star" /> </h4>
+        <span>{this.props.data[0] == null ? 'No Todos' : this.props.data[0].text}</span>
+        <ol>
+          {this.props.data.map(x => {
+            <li key={x.id}>{x.text}</li>
+          })}
+        </ol>
+      </div>
     );
   }
 }
