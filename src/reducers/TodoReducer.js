@@ -3,7 +3,7 @@ import { ADD_NEW, UPDATE_NEW_TODO_TEXT } from "../actions/TodoActions.js";
 const defaultState ={
   newTodo: {
     id: null,
-    text: '',
+    text: null,
     completed: false
   },
   todoList: []
@@ -26,7 +26,7 @@ export default function(state = defaultState, action={type: 'default'}) {
           ...state.newTodo,
           text: action.payload
         }
-      }; 
+      };
 
     default:
       return state;

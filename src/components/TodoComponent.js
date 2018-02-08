@@ -23,7 +23,7 @@ export default class TodoComponent extends Component {
             <Col md={6}>
               <FormControl
                 type="text"
-                value={this.props.newTodo.text}
+                value={this.props.todoText == null ? "" : this.props.todoText}
                 placeholder="Enter Todo"
                 inputRef={(ref)=>this.todoInput = ref}
                 onChange={() => this.props.updateNewTodoText(this.todoInput.value)}

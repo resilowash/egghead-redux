@@ -8,10 +8,11 @@ import { ADD_NEW } from '../actions/TodoActions';
 
 //map the function here to return the part of state that we want
 
-//TODO this our problem area 
+//TODO this our problem area
 const getTodoItemsFromState = (state) => state.todos.todoList;
 const getEntireTodoFromState = (state) => state.todos;
 const getNewTodoFromState = (state) => state.todos.newTodo;
+const getTodoTextFromState = (state) => state.todos.newTodo.text; 
 
 //create the selector -- don't know much about why this is how this works yet... todo find out.
 export const getTodoListItems = createSelector(
@@ -34,3 +35,11 @@ export const getNewTodo = createSelector(
     return newTodo;
   }
 );
+
+export const getTodoText = createSelector(
+  [getTodoTextFromState],
+  (todoText) => {
+    console.log("Called getTodoText ");
+    return todoText;
+  }
+)
