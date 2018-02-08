@@ -49,9 +49,9 @@ class ListComponent extends Component {
       <div>
         <h4> <Glyphicon glyph="star" /> My Todo List <Glyphicon glyph="star" /> </h4>
         <span>{this.props.data[0] == null ? 'No Todos' : ''}</span>
-          <ol>
-          {this.props.data.map(x => <ListItem item={x} />)}
-          </ol>
+          <ul>
+            {this.props.data.map(x => <ListItem item={x} />)}
+          </ul>
       </div>
     );
   }
