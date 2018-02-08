@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Button, Label, FormControl, ControlLabel, FormGroup, Row, Col, Grid, Glyphicon, PageHeader } from 'react-bootstrap';
 
-import { addNewTodo } from '../actions/TodoActions';
+import { addNewTodo, updateNewTodoText } from '../actions/TodoActions';
 //import TodoContainer from '../containers/TodoContainer';
 
 
@@ -23,10 +23,10 @@ export default class TodoComponent extends Component {
             <Col md={6}>
               <FormControl
                 type="text"
-                value={this.newTodo}
+                value={this.props.newTodo.text}
                 placeholder="Enter Todo"
                 inputRef={(ref)=>this.todoInput = ref}
-                onChange={null}
+                onChange={() => this.props.updateNewTodoText(this.todoInput.value)}
                 />
             </Col>
             <Col md={4}>
@@ -48,18 +48,19 @@ class ListComponent extends Component {
     return (
       <div>
         <h4> <Glyphicon glyph="star" /> My Todo List <Glyphicon glyph="star" /> </h4>
-        <span>{this.props.data[0] == null ? 'No Todos' : this.props.data[0].text}</span>
-
+        <span>{this.props.data[0] == null ? 'No Todos' : ''}</span>
+          <ol>
           {this.props.data.map(x => <ListItem item={x} />)}
-
+          </ol>
       </div>
     );
   }
 }
 
+//function style component
 const ListItem = ({item}) => {
   return (
-    <div key={item.id}>{item.text}</div>
+    <li key={item.id}>{item.text}</li>
   )
 }
 

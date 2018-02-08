@@ -1,4 +1,4 @@
-import { ADD_NEW } from "../actions/TodoActions.js";
+import { ADD_NEW, UPDATE_NEW_TODO_TEXT } from "../actions/TodoActions.js";
 
 const defaultState ={
   newTodo: {
@@ -19,6 +19,15 @@ export default function(state = defaultState, action={type: 'default'}) {
         ...state,
         todoList: [...state.todoList, action.payload]
       };
+    case UPDATE_NEW_TODO_TEXT:
+      return {
+        ...state,
+        newTodo: {
+          ...state.newTodo,
+          text: action.payload
+        }
+      }; 
+
     default:
       return state;
 
