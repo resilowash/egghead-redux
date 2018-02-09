@@ -6,10 +6,22 @@ import { addNewTodo, updateNewTodoText } from '../actions/TodoActions';
 
 
 export default class TodoComponent extends Component {
+
+  componentDidMount() {
+    //initialization items
+
+    //set focus on the input box
+    this.todoInput.focus();
+  }
+
+  componentDidUpdate() {
+    this.todoInput.focus();
+  }
+
   render() {
     return (
       <div>
-        <PageHeader><Glyphicon glyph="tower" /> My Todo List App </PageHeader>
+        <PageHeader><Glyphicon glyph="list" /> My Todo List App </PageHeader>
         <FormGroup
           controlId="todoForm"
         >
@@ -33,7 +45,7 @@ export default class TodoComponent extends Component {
                 <Button bsStyle="primary" onClick={ () => this.props.addTodo(null, this.todoInput.value) }>Add Todo</Button>
             </Col>
           </Row>
-          <Row>
+          <Row style={{marginTop:'25px'}} >
             <ListComponent data={this.props.todoItems}/>
           </Row>
         </Grid>
@@ -47,7 +59,7 @@ class ListComponent extends Component {
   render() {
     return (
       <div>
-        <h4> <Glyphicon glyph="star" /> My Todo List <Glyphicon glyph="star" /> </h4>
+        <h4> <Glyphicon glyph="pencil" /> Todo List </h4>
         <span>{this.props.data[0] == null ? 'No Todos' : ''}</span>
           <ul>
             {this.props.data.map(x => <ListItem item={x} />)}

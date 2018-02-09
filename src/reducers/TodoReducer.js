@@ -16,7 +16,7 @@ export default function(state = defaultState, action={type: 'default'}) {
 
     case ADD_NEW:
       return {
-        ...state,
+        newTodo: {},
         todoList: [...state.todoList, action.payload]
       };
     case UPDATE_NEW_TODO_TEXT:
