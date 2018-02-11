@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Button, Label, FormControl, ControlLabel, FormGroup, Row, Col, Grid, Glyphicon, PageHeader } from 'react-bootstrap';
 
-import { addNewTodo, updateNewTodoText } from '../actions/TodoActions';
+import { addNewTodo, updateNewTodoText, filterTodos, COMPLETE, INCOMPLETE } from '../actions/TodoActions';
 //import TodoContainer from '../containers/TodoContainer';
 
 
@@ -45,6 +45,11 @@ export default class TodoComponent extends Component {
                 <Button bsStyle="primary" onClick={ () => this.props.addTodo(null, this.todoInput.value) }>Add Todo</Button>
             </Col>
           </Row>
+          <Row>
+            <Col md={1}> <FilterLink todos={ this.props.todoItems } filter={ null }  /> </Col>
+            <Col md={1}> <FilterLink todos={ this.props.todoItems } filter={ COMPLETE }  /> </Col>
+            <Col md={1}> <FilterLink todos={ this.props.todoItems } filter={ INCOMPLETE }  /> </Col>
+          </Row>
           <Row style={{marginTop:'25px'}} >
             <ListComponent data={this.props.todoItems}/>
           </Row>
@@ -74,6 +79,23 @@ const ListItem = ({item}) => {
   return (
     <li key={item.id}>{item.text}</li>
   )
+}
+
+const FilterLink = ({filter, todos}) => {
+  switch(filter) {
+    case INCOMPLETE:
+      return (
+        <a>Incomplete</a>
+      );
+    case COMPLETE:
+      return (
+        <a>Complete</a>
+      );
+    default:
+      return (
+        <a>All</a>
+      );
+  }
 }
 
 /*
