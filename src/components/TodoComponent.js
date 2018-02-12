@@ -49,7 +49,7 @@ export default class TodoComponent extends Component {
 
           </Row>
           <Row style={{marginTop:'25px'}} >
-            <ListComponent data={this.props.todoItems} filter={this.props.filter} />
+            <ListComponent data={this.props.todoItems} filter={this.props.filter} action={this.props.filterTodos} />
           </Row>
         </Grid>
         </FormGroup>
@@ -64,9 +64,7 @@ class ListComponent extends Component {
     return (
       <div>
         <div className={'filter-link-bar'}>
-          <FilterLink text="All Items"/>
-          <FilterLink text="Complete Items" />
-          <FilterLink text="Incomplete Items" />
+          <FilterLink filterType={this.props.filter} todos={this.props.data} action={this.props.action}/>
         </div>
         <h4> <Glyphicon glyph="pencil" /> Todo List </h4>
         <span>{this.props.data[0] == null ? 'No Todos' : ''}</span>
@@ -83,15 +81,16 @@ const ListItem = ({item}) => {
   return (
     <li key={item.id}>{item.text}</li>
   )
-}
-//TODO make the call to the action more dynamic?
-const FilterLink = ({filterType}) => {
+};
+
+//TODO make the call to the action more dynamic? This is completely inelegant
+const FilterLink = ({filterType, todos, action}) => {
   switch(filterType) {
     case ALL:
       return (
         <div className={'filter-link-bar'}>
           <span className={'filter-link'}>
-            <a>Complete</a>
+            <a onClick={action(filtertype)}>Complete</a>
           </span>
           <span className={'filter-link'}>
             <a>Incomplete</a>
@@ -131,6 +130,5 @@ const FilterLink = ({filterType}) => {
                 </span>
               </div>
             );
-
   }
-}
+};
