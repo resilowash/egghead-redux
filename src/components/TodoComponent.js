@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Button, Label, FormControl, ControlLabel, FormGroup, Row, Col, Grid, Glyphicon, PageHeader } from 'react-bootstrap';
 
-import { addNewTodo, updateNewTodoText, filterTodos, COMPLETE, INCOMPLETE } from '../actions/TodoActions';
+import { addNewTodo, updateNewTodoText, filterTodos, COMPLETE, INCOMPLETE, ALL } from '../actions/TodoActions';
 //import TodoContainer from '../containers/TodoContainer';
 
 
@@ -46,12 +46,10 @@ export default class TodoComponent extends Component {
             </Col>
           </Row>
           <Row>
-            <Col md={1}> <FilterLink todos={ this.props.todoItems } filter={ null }  /> </Col>
-            <Col md={1}> <FilterLink todos={ this.props.todoItems } filter={ COMPLETE }  /> </Col>
-            <Col md={1}> <FilterLink todos={ this.props.todoItems } filter={ INCOMPLETE }  /> </Col>
+
           </Row>
           <Row style={{marginTop:'25px'}} >
-            <ListComponent data={this.props.todoItems}/>
+            <ListComponent data={this.props.todoItems} filter={this.props.filter} />
           </Row>
         </Grid>
         </FormGroup>
@@ -60,10 +58,16 @@ export default class TodoComponent extends Component {
   }
 }
 
+//TODO make the filter links appear only when the current set isn't displayed. E.g. All link shouldn't display when all are showing
 class ListComponent extends Component {
   render() {
     return (
       <div>
+        <div className={'filter-link-bar'}>
+          <FilterLink text="All Items"/>
+          <FilterLink text="Complete Items" />
+          <FilterLink text="Incomplete Items" />
+        </div>
         <h4> <Glyphicon glyph="pencil" /> Todo List </h4>
         <span>{this.props.data[0] == null ? 'No Todos' : ''}</span>
           <ul>
@@ -80,26 +84,53 @@ const ListItem = ({item}) => {
     <li key={item.id}>{item.text}</li>
   )
 }
+//TODO make the call to the action more dynamic?
+const FilterLink = ({filterType}) => {
+  switch(filterType) {
+    case ALL:
+      return (
+        <div className={'filter-link-bar'}>
+          <span className={'filter-link'}>
+            <a>Complete</a>
+          </span>
+          <span className={'filter-link'}>
+            <a>Incomplete</a>
+          </span>
+        </div>
+      );
+      case COMPLETE:
+        return (
+          <div className={'filter-link-bar'}>
+            <span className={'filter-link'}>
+              <a>All</a>
+            </span>
+            <span className={'filter-link'}>
+              <a>Incomplete</a>
+            </span>
+          </div>
+        );
+        case INCOMPLETE:
+          return (
+            <div className={'filter-link-bar'}>
+              <span className={'filter-link'}>
+                <a>All</a>
+              </span>
+              <span className={'filter-link'}>
+                <a>Complete</a>
+              </span>
+            </div>
+          );
+          default:
+            return (
+              <div className={'filter-link-bar'}>
+                <span className={'filter-link'}>
+                  <a>Complete</a>
+                </span>
+                <span className={'filter-link'}>
+                  <a>Incomplete</a>
+                </span>
+              </div>
+            );
 
-const FilterLink = ({filter, todos}) => {
-  switch(filter) {
-    case INCOMPLETE:
-      return (
-        <a>Incomplete</a>
-      );
-    case COMPLETE:
-      return (
-        <a>Complete</a>
-      );
-    default:
-      return (
-        <a>All</a>
-      );
   }
 }
-
-/*
-const ListComponent = ({}) => {
-
-}
-*/

@@ -9,6 +9,7 @@ export const TOGGLE_TODOS = 'TOGGLE_TODOS';
 //filter types
 export const COMPLETE = 'COMPLETE';
 export const INCOMPLETE = 'INCOMPLETE';
+export const ALL = 'ALL';
 
 //globalID for todo simulates database return of id for web session
 var gID = 1;
@@ -39,18 +40,18 @@ export const updateNewTodoText = (text) => {
 }
 
 //it might be better to do this in the selector?
-const sortTodos = (filterType, todos) => {
+export const filterTodos = (filterType, todos) => {
   switch(filterType) {
     case INCOMPLETE:
       todos = todos.filter(todo => todo.completed === false);
     case COMPLETE:
       todos = todos.filter(todo => todo.completed === true);
 
-    filterTodos(todos);
+    filterTodosAction(todos);
   }
 }
 
-export const filterTodos = (filteredTodos) => {
+export const filterTodosAction = (filteredTodos) => {
   console.log('ACTION: ', FILTER_TODOS );
   return {
     type: FILTER_TODOS,

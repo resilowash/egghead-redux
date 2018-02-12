@@ -31,6 +31,8 @@ Install the dependencies and run the app. Utilizes webpack-dev-server to run.
 - [ ] Dockerfy the app
 - [ ] Setup the filter links properly
 - [ ] Allow for toggling the todos complete or incomplete by clicking them.
+- [ ] Optional: Add button bar instead of filter links?
+- [ ] Optional: add Table rows with striping and a action link
 
 ##### Redux Tutorial Framework
 I used Stephen Grider's redux simple starter as a baseline with some heavy modifications. It probably would have been more simple to use create-reeact template or something similar.  Eventually I want to scaffold out our pattern using yeoman.
