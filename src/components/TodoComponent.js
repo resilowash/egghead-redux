@@ -64,7 +64,7 @@ class ListComponent extends Component {
     return (
       <div>
         <div className={'filter-link-bar'}>
-          <FilterLink filterType={this.props.filter} todos={this.props.data} action={this.props.action}/>
+          <FilterLink filterType={this.props.filter} todos={this.props.data} action={this.props}/>
         </div>
         <h4> <Glyphicon glyph="pencil" /> Todo List </h4>
         <span>{this.props.data[0] == null ? 'No Todos' : ''}</span>
@@ -90,7 +90,7 @@ const FilterLink = ({filterType, todos, action}) => {
       return (
         <div className={'filter-link-bar'}>
           <span className={'filter-link'}>
-            <a onClick={action(filtertype)}>Complete</a>
+            <a onClick={action.filterTodos(filtertype)}>Complete</a>
           </span>
           <span className={'filter-link'}>
             <a>Incomplete</a>
