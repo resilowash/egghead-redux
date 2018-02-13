@@ -90,10 +90,10 @@ const FilterLink = ({filterType, todos, action}) => {
       return (
         <div className={'filter-link-bar'}>
           <span className={'filter-link'}>
-            <a onClick={action.filterTodos(filtertype)}>Complete</a>
+            <a href="#" >Complete</a>
           </span>
           <span className={'filter-link'}>
-            <a>Incomplete</a>
+            <a href="#">Incomplete</a>
           </span>
         </div>
       );
@@ -101,10 +101,10 @@ const FilterLink = ({filterType, todos, action}) => {
         return (
           <div className={'filter-link-bar'}>
             <span className={'filter-link'}>
-              <a>All</a>
+              <a href="#">All</a>
             </span>
             <span className={'filter-link'}>
-              <a>Incomplete</a>
+              <a href="#">Incomplete</a>
             </span>
           </div>
         );
@@ -112,10 +112,10 @@ const FilterLink = ({filterType, todos, action}) => {
           return (
             <div className={'filter-link-bar'}>
               <span className={'filter-link'}>
-                <a>All</a>
+                <a href="#">All</a>
               </span>
               <span className={'filter-link'}>
-                <a>Complete</a>
+                <a href="#">Complete</a>
               </span>
             </div>
           );
