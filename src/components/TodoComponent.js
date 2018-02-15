@@ -61,10 +61,41 @@ export default class TodoComponent extends Component {
 //TODO make the filter links appear only when the current set isn't displayed. E.g. All link shouldn't display when all are showing
 class ListComponent extends Component {
   render() {
+    let linkPanel;
+    switch(this.props.filter) {
+      case ALL:
+        linkPanel = (
+          <div className={'filter-link-bar'}>
+            <FilterLink filterClick={null} text={"Complete"} filter={COMPLETE} />
+            <FilterLink filterClick={null} text={"Incomplete"} filter={INCOMPLETE} />
+          </div>
+        );
+      case INCOMPLETE:
+      linkPanel = (
+        <div className={'filter-link-bar'}>
+          <FilterLink filterClick={null} text={"All"} filter={ALL} />
+          <FilterLink filterClick={null} text={"Complete"} filter={COMPLETE} />
+        </div>
+      );
+      case COMPLETE:
+      linkPanel = (
+        <div className={'filter-link-bar'}>
+          <FilterLink filterClick={null} text={"All"} filter={ALL} />
+          <FilterLink filterClick={null} text={"Incomplete"} filter={INCOMPLETE} />
+        </div>
+      );
+      default:
+        linkPanel = (
+          <div className={'filter-link-bar'}>
+            <FilterLink filterClick={null} text={"Complete"} filter={COMPLETE} />
+            <FilterLink filterClick={null} text={"Incomplete"} filter={INCOMPLETE} />
+          </div>
+        );
+    }
     return (
       <div>
         <div className={'filter-link-bar'}>
-          <FilterLink filterType={this.props.filter} todos={this.props.data} action={this.props}/>
+          {linkPanel}
         </div>
         <h4> <Glyphicon glyph="pencil" /> Todo List </h4>
         <span>{this.props.data[0] == null ? 'No Todos' : ''}</span>
@@ -83,8 +114,14 @@ const ListItem = ({item}) => {
   )
 };
 
+const FilterLink = ({filter, text, filterClick}) => {
+  return (
+    <a href="#" className="filter-link" onClick={e => {e.preventDefault(); this.props.filterClick(filter) }}> {text} </a>
+  )
+}
+
 //TODO make the call to the action more dynamic? This is completely inelegant
-const FilterLink = ({filterType, todos, action}) => {
+const FilterLinkOld = ({filterType, todos, action}) => {
   switch(filterType) {
     case ALL:
       return (
