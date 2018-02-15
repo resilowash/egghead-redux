@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { ADD_NEW } from '../actions/TodoActions';
+import { ADD_NEW, INCOMPLETE, COMPLETE, ALL } from '../actions/TodoActions';
 
 //map the function here to return the part of state that we want
 const getTodoItemsFromState = (state) => state.todos.todoList;
@@ -40,14 +40,20 @@ export const getTodoText = createSelector(
 );
 
 export const getFilteredTodos = createSelector(
-  [getFilteredTodosFromState],
-  (filteredTodos) => {
+  [getFilterFromState],
+  (filter) => {
     console.log("Called getFilteredTodos Selector");
+    switch(filter) {
+      case INCOMPLETE:
+        filteredTodos = filteredTodos.filter(todo => todo.completed === false);
+      case COMPLETE:
+        filteredTodos = filteredTodos.filter(todo => todo.completed === true);
     return filteredTodos;
+    }
   }
 );
 
-// (filter) => filter is shorthand function to just return the filter.  
+// (filter) => filter is shorthand function to just return the filter.
 export const getFilter = createSelector(
   [getFilterFromState],
   (filter) => filter

@@ -32,7 +32,7 @@ export default function(state = defaultState, action={type: 'default'}) {
       case FILTER_TODOS:
         return {
           ...state,
-          filteredTodos: action.payload
+          filter: action.payload
         };
       case TOGGLE_TODOS:
         return {

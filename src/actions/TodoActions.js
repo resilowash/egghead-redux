@@ -39,23 +39,11 @@ export const updateNewTodoText = (text) => {
   };
 }
 
-//it might be better to do this in the selector?
-export const filterTodos = (filterType, todos) => {
-  switch(filterType) {
-    case INCOMPLETE:
-      todos = todos.filter(todo => todo.completed === false);
-    case COMPLETE:
-      todos = todos.filter(todo => todo.completed === true);
-
-    filterTodosAction(todos);
-  }
-}
-
-export const filterTodosAction = (filteredTodos) => {
+export const filterTodos = (filter) => {
   console.log('ACTION: ', FILTER_TODOS );
   return {
     type: FILTER_TODOS,
-    payload: filteredTodos
+    payload: filter
   };
 }
 

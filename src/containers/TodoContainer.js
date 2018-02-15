@@ -17,7 +17,7 @@ const TodoContainer = connect(
   (dispatch) => {
     return {
        filterTodos: (filter) => {
-         dispatch(filterTodos(filter, this.todoItems))
+         dispatch(filterTodos(filter))
        },
        addTodo: (id, text) => {
          dispatch(addNewTodo(id, text));
