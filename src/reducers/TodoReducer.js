@@ -1,4 +1,4 @@
-import { ADD_NEW, UPDATE_NEW_TODO_TEXT, FILTER_TODOS, TOGGLE_TODOS } from "../actions/TodoActions.js";
+import { ADD_NEW, UPDATE_NEW_TODO_TEXT, FILTER_TODOS, TOGGLE_TODOS, ALL, INCOMPLETE, COMPLETE } from "../actions/TodoActions.js";
 
 const defaultState ={
   newTodo: {
@@ -7,7 +7,7 @@ const defaultState ={
     completed: false
   },
   todoList: [],
-  filter: null,
+  filter: ALL,
   filteredTodos: []
 
 }

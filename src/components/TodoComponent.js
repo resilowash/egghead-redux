@@ -62,33 +62,34 @@ export default class TodoComponent extends Component {
 class ListComponent extends Component {
   render() {
     let linkPanel;
+    console.log("Props for list component: ", this.props);
     switch(this.props.filter) {
       case ALL:
         linkPanel = (
           <div className={'filter-link-bar'}>
-            <FilterLink filterClick={null} text={"Complete"} filter={COMPLETE} />
-            <FilterLink filterClick={null} text={"Incomplete"} filter={INCOMPLETE} />
+            <FilterLink text={"Complete"} filter={COMPLETE} filterClick={this.props.action} />
+            <FilterLink text={"Incomplete"} filter={INCOMPLETE} filterClick={this.props.action} />
           </div>
         );
       case INCOMPLETE:
       linkPanel = (
         <div className={'filter-link-bar'}>
-          <FilterLink filterClick={null} text={"All"} filter={ALL} />
-          <FilterLink filterClick={null} text={"Complete"} filter={COMPLETE} />
+          <FilterLink text={"All"} filter={ALL} filterClick={this.props.action}/>
+          <FilterLink text={"Complete"} filter={COMPLETE} filterClick={this.props.action}/>
         </div>
       );
       case COMPLETE:
       linkPanel = (
         <div className={'filter-link-bar'}>
-          <FilterLink filterClick={null} text={"All"} filter={ALL} />
-          <FilterLink filterClick={null} text={"Incomplete"} filter={INCOMPLETE} />
+          <FilterLink text={"All"} filter={ALL} filterClick={this.props.action}/>
+          <FilterLink text={"Incomplete"} filter={INCOMPLETE} filterClick={this.props.action}/>
         </div>
       );
       default:
         linkPanel = (
           <div className={'filter-link-bar'}>
-            <FilterLink filterClick={null} text={"Complete"} filter={COMPLETE} />
-            <FilterLink filterClick={null} text={"Incomplete"} filter={INCOMPLETE} />
+            <FilterLink text={"Complete"} filter={COMPLETE} filterClick={this.props.action}/>
+            <FilterLink text={"Incomplete"} filter={INCOMPLETE} filterClick={this.props.action}/>
           </div>
         );
     }
@@ -115,7 +116,8 @@ const ListItem = ({item}) => {
 };
 
 const FilterLink = ({filter, text, filterClick}) => {
+  console.log("Props for the FilterLink: ", text);
   return (
-    <a href="#" className="filter-link" onClick={e => {e.preventDefault(); this.props.filterClick(filter) }}> {text} </a>
+    <a href="#" className="filter-link" onClick={e => {e.preventDefault(); filterClick(filter) }}> {text} </a>
   )
 }
