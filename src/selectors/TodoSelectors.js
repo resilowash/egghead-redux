@@ -48,13 +48,14 @@ export const getFilteredTodos = createSelector(
     switch(filter) {
       case INCOMPLETE:
         console.log("Incomplete filter");
-        todos.filteredTodos = todos.todoList.filter(todo => todo.completed == false);
+        todos.filteredTodos = todos.todoList.filter(todo => todo.completed === false);
         break;
       case COMPLETE:
-        todos.filteredTodos = todos.todoList.filter(todo => todo.completed == true);
+        todos.filteredTodos = todos.todoList.filter(todo => todo.completed === true);
         break;
       default:
-        todos.filteredTodos = todos.todoList; 
+        todos.filteredTodos = todos.todoList;
+
     console.log("Filtered Todos: ", todos.filteredTodos);
     return todos.filteredTodos;
     }

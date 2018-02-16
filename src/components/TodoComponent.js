@@ -49,7 +49,7 @@ export default class TodoComponent extends Component {
 
           </Row>
           <Row style={{marginTop:'25px'}} >
-            <ListComponent data={this.props.filteredTodos} filter={this.props.filter} action={this.props.filterTodos} />
+            <ListComponent data={this.props.todoItems} filter={this.props.filter} action={this.props.filterTodos} />
           </Row>
         </Grid>
         </FormGroup>
@@ -108,7 +108,7 @@ class ListComponent extends Component {
         </div>
         <h4> <Glyphicon glyph="pencil" /> Todo List </h4>
           <ul>
-            {this.props.data[0] != null ? this.props.data.map(x => <ListItem item={x} />) : <li>No Todos</li>}
+            {this.props.data != null || this.props.data !== []  || this.props.data != undefined ? this.props.data.map(x => <ListItem item={x} />) : <li>No Todos</li>}
           </ul>
       </div>
     );

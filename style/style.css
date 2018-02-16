@@ -6,3 +6,11 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.item-complete{
+  text-decoration: line-through;
+}
+
+.item-incomplete{
+  text-decoration: none; 
+}
