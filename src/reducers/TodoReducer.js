@@ -1,4 +1,4 @@
-import { ADD_NEW, UPDATE_NEW_TODO_TEXT } from "../actions/TodoActions.js";
+import { ADD_NEW, UPDATE_NEW_TODO_TEXT, FILTER_TODOS, TOGGLE_TODOS, ALL, INCOMPLETE, COMPLETE } from "../actions/TodoActions.js";
 
 const defaultState ={
   newTodo: {
@@ -6,8 +6,8 @@ const defaultState ={
     text: null,
     completed: false
   },
-  todoList: []
-
+  todoList: [],
+  filter: ALL
 }
 
 export default function(state = defaultState, action={type: 'default'}) {
@@ -17,7 +17,8 @@ export default function(state = defaultState, action={type: 'default'}) {
     case ADD_NEW:
       return {
         newTodo: {},
-        todoList: [...state.todoList, action.payload]
+        todoList: [...state.todoList, action.payload],
+        //filteredTodos: [...state.todoList, action.payload]
       };
     case UPDATE_NEW_TODO_TEXT:
       return {
@@ -27,7 +28,16 @@ export default function(state = defaultState, action={type: 'default'}) {
           text: action.payload
         }
       };
-
+      case FILTER_TODOS:
+        return {
+          ...state,
+          filter: action.payload
+        };
+      case TOGGLE_TODOS:
+        return {
+          ...state,
+          todoList: [...todoList, ]
+        };
     default:
       return state;
 

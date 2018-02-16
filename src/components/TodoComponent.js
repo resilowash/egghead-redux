@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Button, Label, FormControl, ControlLabel, FormGroup, Row, Col, Grid, Glyphicon, PageHeader } from 'react-bootstrap';
 
-import { addNewTodo, updateNewTodoText } from '../actions/TodoActions';
+import { addNewTodo, updateNewTodoText, filterTodos, COMPLETE, INCOMPLETE, ALL } from '../actions/TodoActions';
 //import TodoContainer from '../containers/TodoContainer';
 
 
@@ -45,8 +45,11 @@ export default class TodoComponent extends Component {
                 <Button bsStyle="primary" onClick={ () => this.props.addTodo(null, this.todoInput.value) }>Add Todo</Button>
             </Col>
           </Row>
+          <Row>
+
+          </Row>
           <Row style={{marginTop:'25px'}} >
-            <ListComponent data={this.props.todoItems}/>
+            <ListComponent data={this.props.visibleTodos} filter={this.props.filter} action={this.props.filterTodos} />
           </Row>
         </Grid>
         </FormGroup>
@@ -55,14 +58,57 @@ export default class TodoComponent extends Component {
   }
 }
 
+//this is very inelegant a lot of copy and paste code.  TODO refactor
 class ListComponent extends Component {
   render() {
+    let linkPanel;
+    console.log("Props for list component: ", this.props);
+    switch(this.props.filter) {
+      case ALL:
+        linkPanel = (
+          <div className={'filter-link-bar'}>
+            Show:
+            <FilterLink text={"Complete"} filter={COMPLETE} filterClick={this.props.action} />
+            <FilterLink text={"Incomplete"} filter={INCOMPLETE} filterClick={this.props.action} />
+          </div>
+        );
+        break;
+      case INCOMPLETE:
+      linkPanel = (
+        <div className={'filter-link-bar'}>
+          Show:
+          <FilterLink text={"All"} filter={ALL} filterClick={this.props.action}/>
+          <FilterLink text={"Complete"} filter={COMPLETE} filterClick={this.props.action}/>
+        </div>
+      );
+      break;
+      case COMPLETE:
+      linkPanel = (
+        <div className={'filter-link-bar'}>
+          Show:
+          <FilterLink text={"All"} filter={ALL} filterClick={this.props.action}/>
+          <FilterLink text={"Incomplete"} filter={INCOMPLETE} filterClick={this.props.action}/>
+        </div>
+      );
+      break;
+      default:
+        linkPanel = (
+          <div className={'filter-link-bar'}>
+            Show:
+            <FilterLink text={"Complete"} filter={COMPLETE} filterClick={this.props.action}/>
+            <FilterLink text={"Incomplete"} filter={INCOMPLETE} filterClick={this.props.action}/>
+          </div>
+        );
+        break;
+    }
     return (
       <div>
+        <div className={'filter-link-bar'}>
+          {linkPanel}
+        </div>
         <h4> <Glyphicon glyph="pencil" /> Todo List </h4>
-        <span>{this.props.data[0] == null ? 'No Todos' : ''}</span>
           <ul>
-            {this.props.data.map(x => <ListItem item={x} />)}
+            {this.props.data[0] == null  ? <li>No Todos</li> : this.props.data.map(x => <ListItem item={x} />)}
           </ul>
       </div>
     );
@@ -74,10 +120,11 @@ const ListItem = ({item}) => {
   return (
     <li key={item.id}>{item.text}</li>
   )
-}
+};
 
-/*
-const ListComponent = ({}) => {
-
+const FilterLink = ({filter, text, filterClick}) => {
+  console.log("Props for the FilterLink: ", text);
+  return (
+    <a href="#" className="filter-link" onClick={e => {e.preventDefault(); filterClick(filter) }}> {text} </a>
+  )
 }
-*/
