@@ -40,15 +40,23 @@ export const getTodoText = createSelector(
 );
 
 export const getFilteredTodos = createSelector(
-  [getFilterFromState],
-  (filter) => {
-    console.log("Called getFilteredTodos Selector");
+  [getEntireTodoFromState],
+  (todos) => {
+    let filter = todos.filter;
+    console.log("Called getFilteredTodos Selector FILTER: ", filter);
+    console.log("Todos in the get filtered Todo before filter: ", todos);
     switch(filter) {
       case INCOMPLETE:
-        filteredTodos = filteredTodos.filter(todo => todo.completed === false);
+        console.log("Incomplete filter");
+        todos.filteredTodos = todos.todoList.filter(todo => todo.completed == false);
+        break;
       case COMPLETE:
-        filteredTodos = filteredTodos.filter(todo => todo.completed === true);
-    return filteredTodos;
+        todos.filteredTodos = todos.todoList.filter(todo => todo.completed == true);
+        break;
+      default:
+        todos.filteredTodos = todos.todoList; 
+    console.log("Filtered Todos: ", todos.filteredTodos);
+    return todos.filteredTodos;
     }
   }
 );

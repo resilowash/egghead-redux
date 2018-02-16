@@ -49,7 +49,7 @@ export default class TodoComponent extends Component {
 
           </Row>
           <Row style={{marginTop:'25px'}} >
-            <ListComponent data={this.props.todoItems} filter={this.props.filter} action={this.props.filterTodos} />
+            <ListComponent data={this.props.filteredTodos} filter={this.props.filter} action={this.props.filterTodos} />
           </Row>
         </Grid>
         </FormGroup>
@@ -58,7 +58,7 @@ export default class TodoComponent extends Component {
   }
 }
 
-//TODO make the filter links appear only when the current set isn't displayed. E.g. All link shouldn't display when all are showing
+//this is very inelegant a lot of copy and paste code.  TODO refactor
 class ListComponent extends Component {
   render() {
     let linkPanel;
@@ -67,31 +67,39 @@ class ListComponent extends Component {
       case ALL:
         linkPanel = (
           <div className={'filter-link-bar'}>
+            Show:
             <FilterLink text={"Complete"} filter={COMPLETE} filterClick={this.props.action} />
             <FilterLink text={"Incomplete"} filter={INCOMPLETE} filterClick={this.props.action} />
           </div>
         );
+        break;
       case INCOMPLETE:
       linkPanel = (
         <div className={'filter-link-bar'}>
+          Show:
           <FilterLink text={"All"} filter={ALL} filterClick={this.props.action}/>
           <FilterLink text={"Complete"} filter={COMPLETE} filterClick={this.props.action}/>
         </div>
       );
+      break;
       case COMPLETE:
       linkPanel = (
         <div className={'filter-link-bar'}>
+          Show:
           <FilterLink text={"All"} filter={ALL} filterClick={this.props.action}/>
           <FilterLink text={"Incomplete"} filter={INCOMPLETE} filterClick={this.props.action}/>
         </div>
       );
+      break;
       default:
         linkPanel = (
           <div className={'filter-link-bar'}>
+            Show:
             <FilterLink text={"Complete"} filter={COMPLETE} filterClick={this.props.action}/>
             <FilterLink text={"Incomplete"} filter={INCOMPLETE} filterClick={this.props.action}/>
           </div>
         );
+        break;
     }
     return (
       <div>
@@ -99,9 +107,8 @@ class ListComponent extends Component {
           {linkPanel}
         </div>
         <h4> <Glyphicon glyph="pencil" /> Todo List </h4>
-        <span>{this.props.data[0] == null ? 'No Todos' : ''}</span>
           <ul>
-            {this.props.data.map(x => <ListItem item={x} />)}
+            {this.props.data[0] != null ? this.props.data.map(x => <ListItem item={x} />) : <li>No Todos</li>}
           </ul>
       </div>
     );

@@ -37,7 +37,7 @@ export default function(state = defaultState, action={type: 'default'}) {
       case TOGGLE_TODOS:
         return {
           ...state,
-          filter: action.payload
+          todoList: [...todoList, ]
         };
     default:
       return state;
