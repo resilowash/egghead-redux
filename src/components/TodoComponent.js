@@ -49,7 +49,7 @@ export default class TodoComponent extends Component {
 
           </Row>
           <Row style={{marginTop:'25px'}} >
-            <ListComponent data={this.props.filteredTodos} filter={this.props.filter} action={this.props.filterTodos} />
+            <ListComponent data={this.props.visibleTodos} filter={this.props.filter} action={this.props.filterTodos} />
           </Row>
         </Grid>
         </FormGroup>

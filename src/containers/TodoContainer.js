@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import TodoComponent from '../components/TodoComponent';
 import { addNewTodo, updateNewTodoText, filterTodos } from '../actions/TodoActions';
-import { getTodoListItems, getEntireTodo, getNewTodo, getTodoText, getFilteredTodos, getFilter } from '../selectors/TodoSelectors'
+import { getTodoListItems, getEntireTodo, getNewTodo, getTodoText, getVisibleTodos, getFilter } from '../selectors/TodoSelectors'
 
 //the dispatch function argument in the connect is commonly referred to as the mapDispatchToProps
 const TodoContainer = connect(
@@ -10,7 +10,7 @@ const TodoContainer = connect(
       todoItems: getTodoListItems(state),
       newTodo: getNewTodo(state),
       todoText: getTodoText(state),
-      filteredTodos: getFilteredTodos(state),
+      visibleTodos: getVisibleTodos(state),
       filter: getFilter(state)
     }
   },

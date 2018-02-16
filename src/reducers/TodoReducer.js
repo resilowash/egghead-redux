@@ -7,9 +7,7 @@ const defaultState ={
     completed: false
   },
   todoList: [],
-  filter: ALL,
-  filteredTodos: []
-
+  filter: ALL
 }
 
 export default function(state = defaultState, action={type: 'default'}) {

@@ -39,7 +39,7 @@ export const getTodoText = createSelector(
   }
 );
 
-export const getFilteredTodos = createSelector(
+export const getVisibleTodos = createSelector(
   [getEntireTodoFromState],
   (todos) => {
     let filter = todos.filter;
@@ -47,17 +47,12 @@ export const getFilteredTodos = createSelector(
     console.log("Todos in the get filtered Todo before filter: ", todos);
     switch(filter) {
       case INCOMPLETE:
-        console.log("Incomplete filter");
-        todos.filteredTodos = todos.todoList.filter(todo => todo.completed === false);
-        break;
+        return todos.todoList.filter(todo => !todo.completed);
       case COMPLETE:
-        todos.filteredTodos = todos.todoList.filter(todo => todo.completed === true);
-        break;
+        return todos.todoList.filter(todo => todo.completed);
       default:
-        todos.filteredTodos = todos.todoList;
+        return todos.todoList;
 
-    console.log("Filtered Todos: ", todos.filteredTodos);
-    return todos.filteredTodos;
     }
   }
 );
