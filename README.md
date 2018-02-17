@@ -24,13 +24,13 @@ Install the dependencies and run the app. Utilizes webpack-dev-server to run.
 - [ ] Add JSLint to webpack
 - [ ] Add Jest unit tests
 - [ ] Make webpack do live reloading
-- [ ] Make Webpack not use bundle.js during development
+- [ ] Optional: Make Webpack not use bundle.js during development
 - [ ] Re-scaffold project -> Consider a yeoman scaffolding solution
 - [ ] Make debuggable in visual studio code as well as providing more info to the console.
 - [ ] Replace global variable with state change instead.
 - [ ] Dockerfy the app
-- [ ] Setup the filter links properly
-- [ ] Allow for toggling the todos complete or incomplete by clicking them.
+- [x] Setup the filter links properly
+- [x] Allow for toggling the todos complete or incomplete by clicking them.
 - [ ] Optional: Add button bar instead of filter links?
 - [ ] Optional: add Table rows with striping and a action link
 
