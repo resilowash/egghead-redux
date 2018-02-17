@@ -4,7 +4,7 @@
 export const ADD_NEW = 'ADD_NEW';
 export const UPDATE_NEW_TODO_TEXT = 'UPDATE_NEW_TODO_TEXT';
 export const FILTER_TODOS = 'FILTER_TODOS';
-export const TOGGLE_TODOS = 'TOGGLE_TODOS';
+export const TOGGLE_TODO = 'TOGGLE_TODO';
 
 //filter types
 export const COMPLETE = 'COMPLETE';
@@ -37,7 +37,7 @@ export const updateNewTodoText = (text) => {
     type: UPDATE_NEW_TODO_TEXT,
     payload: text
   };
-}
+};
 
 export const filterTodos = (filter) => {
   console.log('ACTION: ', FILTER_TODOS );
@@ -47,6 +47,7 @@ export const filterTodos = (filter) => {
   };
 }
 
+//this method is garbage get rid of it.
 export const toggleFilter = (currentFilter) => {
   let newFilter = '';
   if(currentFilter === COMPLETE) {
@@ -57,11 +58,18 @@ export const toggleFilter = (currentFilter) => {
   }
 
   return {
-    type: TOGGLE_TODOS,
+    type: TOGGLE_TODO,
     payload: newFilter
   };
 }
 
+export const toggleTodo = (id) => {
+  console.log('Toggle TODO ID: ', id); 
+  return {
+    type: TOGGLE_TODO,
+    payload: id
+  };
+};
 /*
 export const f = ( id, text ) => {
   return dispatch(addNewTodo(id, text));

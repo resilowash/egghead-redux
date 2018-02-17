@@ -6,7 +6,6 @@ const getTodoItemsFromState = (state) => state.todos.todoList;
 const getEntireTodoFromState = (state) => state.todos;
 const getNewTodoFromState = (state) => state.todos.newTodo;
 const getTodoTextFromState = (state) => state.todos.newTodo.text;
-const getFilteredTodosFromState = (state) => state.todos.filteredTodos;
 const getFilterFromState = (state) => state.todos.filter;
 
 //create the selector -- don't know much about why this is how this works yet... todo find out.
