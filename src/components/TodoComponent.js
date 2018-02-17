@@ -68,7 +68,7 @@ class ListComponent extends Component {
       case ALL:
         linkPanel = (
           <div className={'filter-link-bar'}>
-            Show:
+            <span> Show (All): &nbsp; </span>
             <FilterLink text={"Complete"} filter={COMPLETE} filterClick={this.props.action} />
             <FilterLink text={"Incomplete"} filter={INCOMPLETE} filterClick={this.props.action} />
           </div>
@@ -77,7 +77,7 @@ class ListComponent extends Component {
       case INCOMPLETE:
       linkPanel = (
         <div className={'filter-link-bar'}>
-          Show:
+          <span> Show (Incomplete): &nbsp; </span>
           <FilterLink text={"All"} filter={ALL} filterClick={this.props.action}/>
           <FilterLink text={"Complete"} filter={COMPLETE} filterClick={this.props.action}/>
         </div>
@@ -86,7 +86,7 @@ class ListComponent extends Component {
       case COMPLETE:
       linkPanel = (
         <div className={'filter-link-bar'}>
-          Show:
+          <span> Show (Complete): &nbsp; </span>
           <FilterLink text={"All"} filter={ALL} filterClick={this.props.action}/>
           <FilterLink text={"Incomplete"} filter={INCOMPLETE} filterClick={this.props.action}/>
         </div>
