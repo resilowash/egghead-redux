@@ -1,4 +1,4 @@
-import { ADD_NEW, UPDATE_NEW_TODO_TEXT, FILTER_TODOS, TOGGLE_TODOS, ALL, INCOMPLETE, COMPLETE } from "../actions/TodoActions.js";
+import { ADD_NEW, UPDATE_NEW_TODO_TEXT, FILTER_TODOS, TOGGLE_TODO, ALL, INCOMPLETE, COMPLETE } from "../actions/TodoActions.js";
 
 const defaultState ={
   newTodo: {
@@ -13,12 +13,10 @@ const defaultState ={
 export default function(state = defaultState, action={type: 'default'}) {
   //console.log('REDUCER ACTION: ', action);
   switch(action.type){
-
     case ADD_NEW:
       return {
         newTodo: {},
-        todoList: [...state.todoList, action.payload],
-        //filteredTodos: [...state.todoList, action.payload]
+        todoList: [...state.todoList, action.payload]
       };
     case UPDATE_NEW_TODO_TEXT:
       return {
@@ -33,11 +31,19 @@ export default function(state = defaultState, action={type: 'default'}) {
           ...state,
           filter: action.payload
         };
-      case TOGGLE_TODOS:
+      case TOGGLE_TODO:
+        let todos = [];
+        console.log("REDUCER TOGGLE TODO state.todoList: ", state.todoList);
+        state.todoList.forEach((t) => {
+          if(t.id === action.payload) {
+            t.completed = !t.completed
+          }
+          todos.push(t); 
+        })
         return {
           ...state,
-          todoList: [...todoList, ]
-        };
+          todoList: todos
+        }
     default:
       return state;
 
