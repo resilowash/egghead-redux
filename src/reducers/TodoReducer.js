@@ -32,26 +32,10 @@ export default function(state = defaultState, action={type: 'default'}) {
           filter: action.payload
         };
       case TOGGLE_TODO:
-        console.log("TOGGLE_TODO state: ", ...state); 
-        console.log("Toggle TODO REDUCER ", state);
-        console.log("TOGGLE TODO REDUCER action.payload: ", action.payload);
-        let todos = state.todoList.map(t => {
-          console.log("TODO Reducer t: ", t);
-          if(t.id === action.payload){
-            t = {
-              ...t,
-              completed: !t.completed
-            }
-          }
-          else{
-            t = t;
-          }});
-        console.log("TODO REDUCER, state.todoList: ", state.todoList);
-        console.log("TODO Reducer todos: ", todos);
-          return {
-            ...state,
-            todoList: todos
-          }
+        return {
+          ...state,
+          todoList: [...state.todoList, {id:500, text: "TEST", completed: true }]
+        }
     default:
       return state;
 
