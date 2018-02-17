@@ -32,9 +32,17 @@ export default function(state = defaultState, action={type: 'default'}) {
           filter: action.payload
         };
       case TOGGLE_TODO:
+        let todos = [];
+        console.log("REDUCER TOGGLE TODO state.todoList: ", state.todoList);
+        state.todoList.forEach((t) => {
+          if(t.id === action.payload) {
+            t.completed = !t.completed
+          }
+          todos.push(t); 
+        })
         return {
           ...state,
-          todoList: [...state.todoList, {id:500, text: "TEST", completed: true }]
+          todoList: todos
         }
     default:
       return state;
