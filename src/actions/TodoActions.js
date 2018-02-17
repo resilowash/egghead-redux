@@ -47,24 +47,8 @@ export const filterTodos = (filter) => {
   };
 }
 
-//this method is garbage get rid of it.
-export const toggleFilter = (currentFilter) => {
-  let newFilter = '';
-  if(currentFilter === COMPLETE) {
-    newFilter = INCOMPLETE;
-  }
-  else {
-    newFilter = COMPLETE;
-  }
-
-  return {
-    type: TOGGLE_TODO,
-    payload: newFilter
-  };
-}
-
 export const toggleTodo = (id) => {
-  console.log('Toggle TODO ID: ', id); 
+  console.log('Toggle TODO ID: ', id);
   return {
     type: TOGGLE_TODO,
     payload: id

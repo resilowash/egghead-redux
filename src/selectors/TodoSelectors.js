@@ -42,7 +42,8 @@ export const getVisibleTodos = createSelector(
   [getEntireTodoFromState],
   (todos) => {
     let filter = todos.filter;
-    console.log("Called getFilteredTodos Selector FILTER: ", filter);
+    console.log("GETVISIBLETODOS SELECTOR [getEntireTodoFromState]: ", [getEntireTodoFromState]);
+    console.log("Called getFilteredTodos Selector FILTER: ", todos.filter);
     console.log("Todos in the get filtered Todo before filter: ", todos);
     switch(filter) {
       case INCOMPLETE:

@@ -13,7 +13,6 @@ const defaultState ={
 export default function(state = defaultState, action={type: 'default'}) {
   //console.log('REDUCER ACTION: ', action);
   switch(action.type){
-
     case ADD_NEW:
       return {
         newTodo: {},
@@ -33,18 +32,25 @@ export default function(state = defaultState, action={type: 'default'}) {
           filter: action.payload
         };
       case TOGGLE_TODO:
+        console.log("TOGGLE_TODO state: ", ...state); 
         console.log("Toggle TODO REDUCER ", state);
-        console.log("TOGGLE TODO REDUCER action.payload: ", action.payload); 
+        console.log("TOGGLE TODO REDUCER action.payload: ", action.payload);
         let todos = state.todoList.map(t => {
           console.log("TODO Reducer t: ", t);
           if(t.id === action.payload){
-            t.completed = !t.completed
+            t = {
+              ...t,
+              completed: !t.completed
+            }
+          }
+          else{
+            t = t;
           }});
         console.log("TODO REDUCER, state.todoList: ", state.todoList);
         console.log("TODO Reducer todos: ", todos);
           return {
             ...state,
-            todoList: ['garbage', 'nothing']
+            todoList: todos
           }
     default:
       return state;
