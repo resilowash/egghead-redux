@@ -34,17 +34,18 @@ export default function(state = defaultState, action={type: 'default'}) {
         };
       case TOGGLE_TODO:
         console.log("Toggle TODO REDUCER ", state);
-        return state.todoList.map(todo => {
-          if(todo.id !== action.payload) {
-            return todo;
-          }
-
+        console.log("TOGGLE TODO REDUCER action.payload: ", action.payload); 
+        let todos = state.todoList.map(t => {
+          console.log("TODO Reducer t: ", t);
+          if(t.id === action.payload){
+            t.completed = !t.completed
+          }});
+        console.log("TODO REDUCER, state.todoList: ", state.todoList);
+        console.log("TODO Reducer todos: ", todos);
           return {
-            ...todo,
-            completed: !todo.completed
-          };
-      });
-
+            ...state,
+            todoList: ['garbage', 'nothing']
+          }
     default:
       return state;
 
