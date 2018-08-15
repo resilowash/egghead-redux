@@ -1,4 +1,4 @@
-##Todo app
+## Todo app
 Typically when learning something new, I like to make a small example application that is straightforward and has easy to understand functionality.
 This is so that we get to focus on learning the technology rather than understanding what the app is supposed to do.
 This application is a take on the redux tutorial found at https://egghead.io/courses/getting-started-with-redux utilizing the patterns
